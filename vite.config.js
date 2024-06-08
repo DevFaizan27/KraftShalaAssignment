@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react()],
   define: {
     "process.env": process.env,
-    VITE_RAPIDAPI_KEY: process.env.VITE_RAPIDAPI_KEY,
+    RAPIDAPI_KEY: process.env.VITE_RAPIDAPI_KEY,
   },
 })
