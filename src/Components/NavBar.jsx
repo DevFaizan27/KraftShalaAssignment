@@ -31,29 +31,32 @@ const NavBar = () => {
       <div className='flex flex-col md:flex-row justify-between items-center'>
         <div className='flex items-center mb-2 md:mb-0'>
           <img src={foggi} className='w-8 h-8 mr-2 md:w-10 md:h-10' alt="Weather Icon" />
-          <span className='font-serif font-normal text-xs md:font-bold md:text-2xl'><Link to={'/'}>Weather App</Link></span>
+          <span className='font-serif font-normal text-xl md:font-bold md:text-2xl'><Link to={'/'}>Weather App</Link></span>
         </div>
         <div className="flex items-center mb-2 md:mb-0">
-        <input 
-  type="text" 
-  onChange={(e) => setLocation(e.target.value)} 
-  className={`w-full md:min-w-[30vw] outline-none p-1 md:p-2 rounded-r-none rounded-sm border-2 border-r-0 ${isDarkMode ? 'bg-cyan-900 text-cyan-200 border-cyan-200' : 'bg-blue-300 text-blue-900 border-blue-900'}`} 
-  placeholder='Enter the location..............' 
-  onKeyDown={(e) => {
-    if (e.key === "Enter") {
-      getWeather(e); // Passing the event to the getWeather function
-    }
-  }}
-/>
+          <input
+            type="text"
+            onChange={(e) => setLocation(e.target.value)}
+            className={`w-full md:min-w-[30vw] outline-none p-1 md:p-2 rounded-r-none rounded-sm border-2 border-r-0 ${isDarkMode ? 'bg-cyan-900 text-cyan-200 border-cyan-200' : 'bg-blue-300 text-blue-900 border-blue-900'}`}
+            placeholder='Enter the location......'
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                getWeather(e); // Passing the event to the getWeather function
+              }
+            }}
+          />
 
-          <button 
-            onClick={getWeather} 
+          <button
+            onClick={getWeather}
             className={`p-1 md:p-2 border-2 rounded-l-none rounded-sm border-l-0 ${isDarkMode ? 'bg-cyan-900 text-cyan-200 border-cyan-200' : 'bg-blue-300 text-blue-900 border-blue-900'}`}
           >
             <BiSearch size={24} />
           </button>
+          <button className='p-2 ml-4 md:hidden' onClick={toggleTheme}>
+          {isDarkMode ? <IoSunnySharp size={24} /> : <BsMoonStarsFill size={24} />}
+        </button>
         </div>
-        <button className='p-2 ml-0 md:ml-2' onClick={toggleTheme}>
+        <button className='p-2 ml-0 hidden md:flex md:ml-2' onClick={toggleTheme}>
           {isDarkMode ? <IoSunnySharp size={24} /> : <BsMoonStarsFill size={24} />}
         </button>
       </div>
