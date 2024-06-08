@@ -10,7 +10,7 @@ export const getWeatherAsync = createAsyncThunk(
                 `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${location}`,
                 {
                     headers: {
-                        'X-RapidAPI-Key': '49301d2a88mshe7b65f527437a25p184a9fjsn0f7d005f2590',
+                        'X-RapidAPI-Key': `${import.meta.env.VITE_RAPIDAPI_KEY}`,
                         'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com',
                     },
                 }
