@@ -10,7 +10,7 @@ const initialState = {
 }
 
 
-// Create the product slice
+// Create the weather slice
 const weatherSlice = createSlice({
     name: 'weather',
     initialState,
@@ -23,16 +23,16 @@ const weatherSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        //------user end build case------------
+        //------ build case------------
         builder
-            //get all proucts
+            //get weather
             .addCase(getWeatherAsync.pending, (state) => {
                 state.isLoading = true;
               })
               .addCase(getWeatherAsync.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.isSuccess = true;
-                state.weather = action.payload; // Assuming the API returns an array directly
+                state.weather = action.payload; 
               })
               .addCase(getWeatherAsync.rejected, (state, action) => {
                 state.isLoading = false;

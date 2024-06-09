@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useTheme } from '../ThemeContext';
+import { useNavigate } from 'react-router-dom';
 
 const Forecast = () => {
     const { isDarkMode } = useTheme();
     const { weather } = useSelector((state) => state.weather);
     const currentDay = weather?.forecast?.forecastday[0];
 
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (currentDay === undefined) {
+            navigate('/');
+        }
+    }, [currentDay, navigate]);
+
+    if (currentDay === undefined) {
+        return null; // Optionally, you can return a loading spinner or some other placeholder
+    }
 
     return (
         <div className='flex flex-col md:flex-row max-w-full p-2'>
